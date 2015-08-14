@@ -14,7 +14,7 @@ import java.util.List;
 public class Car 
 {
 	static String COMMA_DELIMITER = ",";
-	static String url = "D:/Car.csv";
+	static String url = "C:/Project/Car.csv";
 	static List<String> car = new ArrayList<String>();
 	public static List<String> readCsvFile() throws IOException 
 	{
