@@ -21,14 +21,26 @@ public class Matrix {
 	/* End of Matrix class constructor */
 	
 	/* Start of addElement function */
-	public void addElements(int row, int col, int val){
-		data[row][col] = val;
+	public boolean addElements(int row, int col, int val){
+		if(row < 0 || col <0) 
+			return false;
+		else if (row >= noRows || col >= noCols)
+			return false;
+		else
+			data[row][col] = val;
+			return true;
 	}
 	/* End of addElement function */
 	
 	public Matrix(){
 		
 	}
+	
+	/*starting of getter*/
+	public int[][] getData(){
+		return data;
+	}
+	/*end of getter*/
 	/* Starting of transpose function */
 	public Matrix transpose(){		//It will create a object of class Matrix then will transpose
 		
