@@ -75,16 +75,8 @@ public class Train {
 		List<TrainDetail> filteredTrainList = new ArrayList<TrainDetail>();
 		for(int counter=0 ; counter < trainList.size() ; counter++){
 			TrainDetail tempTrainDetail = trainList.get(counter);
-			TrainDetail newTrainDetail = new TrainDetail();
 			if(tempTrainDetail.getSource().equalsIgnoreCase(source) && tempTrainDetail.getDestination().equalsIgnoreCase(destination)){
-				newTrainDetail.setTrainNumber(tempTrainDetail.getTrainNumber());				//set train number
-				newTrainDetail.setTrainName(tempTrainDetail.getTrainName());				//set train name
-				newTrainDetail.setTypeTrain(tempTrainDetail.getTypeTrain());				//set train type
-				newTrainDetail.setSource(tempTrainDetail.getSource());					//set train source
-				newTrainDetail.setDestination(tempTrainDetail.getDestination());				//set train destination
-				newTrainDetail.setDuration(tempTrainDetail.getDuration());				//set train duration
-				newTrainDetail.setSeatAvailable(tempTrainDetail.getSeatAvailable());			//set train weight availability
-				filteredTrainList.add(newTrainDetail);
+				filteredTrainList.add(tempTrainDetail);
 			}
 		}
 		return filteredTrainList;
@@ -94,19 +86,10 @@ public class Train {
 	
 	/*Starting of filterList function According to availability of seat */
 	List<TrainDetail> filterList(List<TrainDetail> trainList, int numberOfSeat){
-		filteredTrainList = null;
-		TrainDetail tempTrainDetailObj=new TrainDetail();
-		int index=0;
+		filteredTrainList = new ArrayList<TrainDetail>();
 		for(int counter=0 ; counter < trainList.size() ; counter++){
 			if(Integer.parseInt(trainList.get(counter).getSeatAvailable()) > numberOfSeat){
-				tempTrainDetailObj.setTrainNumber(trainList.get(index).getTrainNumber());
-				tempTrainDetailObj.setTrainName(trainList.get(index).getTrainNumber());
-				tempTrainDetailObj.setTypeTrain(trainList.get(index).getTypeTrain());
-				tempTrainDetailObj.setSource(trainList.get(index).getSource());
-				tempTrainDetailObj.setDestination(trainList.get(index).getDestination());
-				tempTrainDetailObj.setDuration(trainList.get(index).getDuration());
-				tempTrainDetailObj.setSeatAvailable(trainList.get(index).getSeatAvailable());
-				filteredTrainList.add(tempTrainDetailObj);
+				filteredTrainList.add(trainList.get(counter));
 			}
 		}
 		return filteredTrainList;
