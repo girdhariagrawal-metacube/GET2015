@@ -83,23 +83,19 @@ public class UserInterface {
 			 
 			 else if(trainType == 1){
 				 System.out.print("Enter total number of Passengers: ");
-				 seats = Integer.parseInt(bufferReaderObj.readLine());			//enter total number of passenger
-				 if(Integer.parseInt(filteredTrainList.get(trainExist).getSeatAvailable()) >= seats){
-					 paymentObj.checkout(filteredTrainList.get(trainExist), seats);
-					 repeat = false;
-				 }
-				 else{
-					 trainList = trainObj.filterList(filteredTrainList,seats);
-					 repeat = true;
-				 }
 			 }
 			 else{
 				 System.out.print("Enter total weight: ");
-				 seats = Integer.parseInt(bufferReaderObj.readLine());			//if type of train is goods then enter weight
-				 if(Integer.parseInt(filteredTrainList.get(trainExist).getSeatAvailable()) >= seats){
-					 paymentObj.checkout(filteredTrainList.get(trainExist), seats);
-					 repeat = false;
-				 }
+			 }
+			 seats = Integer.parseInt(bufferReaderObj.readLine());			//enter total number of passenger
+			 if(Integer.parseInt(filteredTrainList.get(trainExist).getSeatAvailable()) >= seats){
+				 paymentObj.checkout(filteredTrainList.get(trainExist), seats);
+				 repeat = false;
+			 }
+			 else{
+				 trainList = trainObj.filterList(filteredTrainList,seats);
+				 classObj.printTrainList(trainList);
+				 repeat = true;
 			 }
 		 	}while(repeat);
 	}
