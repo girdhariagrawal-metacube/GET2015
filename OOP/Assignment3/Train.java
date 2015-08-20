@@ -30,31 +30,8 @@ public class Train {
 		try{
 			bufferReaderObj = new BufferedReader(new FileReader(TRAIN_LIST_FILE));
 			while((temp = bufferReaderObj.readLine()) != null){
-				int index = 0;
 				String trainData[] = temp.split(STRING_DELIMITER);
-				TrainDetail trainDetail = null;		//new object creation of trainDetail class
-				if(type == 1 && trainData[2].equalsIgnoreCase("P")){
-					trainDetail = new TrainDetail();
-					trainDetail.setTrainNumber(trainData[index++]);				//set train number
-					trainDetail.setTrainName(trainData[index++]);				//set train name
-					trainDetail.setTypeTrain(trainData[index++]);				//set train type
-					trainDetail.setSource(trainData[index++]);					//set train source
-					trainDetail.setDestination(trainData[index++]);				//set train destination
-					trainDetail.setDuration(trainData[index++]);				//set train duration
-					trainDetail.setSeatAvailable(trainData[index]);			//set train seat availability
-				}
-				else if(type == 2 && trainData[2].equalsIgnoreCase("G")){
-					trainDetail = new TrainDetail();
-					trainDetail.setTrainNumber(trainData[index++]);				//set train number
-					trainDetail.setTrainName(trainData[index++]);				//set train name
-					trainDetail.setTypeTrain(trainData[index++]);				//set train type
-					trainDetail.setSource(trainData[index++]);					//set train source
-					trainDetail.setDestination(trainData[index++]);				//set train destination
-					trainDetail.setDuration(trainData[index++]);				//set train duration
-					trainDetail.setSeatAvailable(trainData[index]);			//set train weight availability
-				}
-				if(trainDetail != null)
-				trainList.add(trainDetail);
+				insertDetails(trainData, type);
 			}
 		}
 		catch(FileNotFoundException exception){
@@ -96,6 +73,29 @@ public class Train {
 		
 	}
 	/*End of filterList function (According to availability of seat) */
-	
+	/* Starting of insertDetails function */
+	public  void	insertDetails(String input[],int trainType) //Will insert train details
+	{
+		int index = 0;
+		String typeOTrain="P";
+		TrainDetail trainDetail = null; 
+		if(trainType==2)
+			typeOTrain="G";//means goods  train
+		if(input[2].equalsIgnoreCase(typeOTrain))
+		{
+			trainDetail = new TrainDetail();
+			trainDetail.setTrainNumber(input[index++]); // set train number
+			trainDetail.setTrainName(input[index++]); // set train name
+			trainDetail.setTypeTrain(input[index++]); // set train type
+			trainDetail.setSource(input[index++]); // set train source
+			trainDetail.setDestination(input[index++]); // set train destination
+			trainDetail.setDuration(input[index++]); // set train duration
+			trainDetail.setSeatAvailable(input[index]); // set train seat availability
+		}
+		if (trainDetail != null)
+			trainList.add(trainDetail);
+		
+	}
+	/*End of insertDetails function*/
 }
-
+/* End of Train class */
