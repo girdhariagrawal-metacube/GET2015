@@ -85,7 +85,6 @@ public class Payment {
 		String passwd = scanObject.nextLine();
 		ticketOutput("Hii "+name+" your payment through NetBanking's Username "+userName+" has been received.", 
 						trainDetail, totalSeats);
-		scanObject.close();
 	}
 	
 	void ticketOutput(String userDetail, TrainDetail trainDetail, int totalSeats){
@@ -95,6 +94,13 @@ public class Payment {
 		System.out.println("Source: "+trainDetail.getSource());
 		System.out.println("Destination: "+trainDetail.getDestination());
 		System.out.println("Total Reservation Quantity: "+totalSeats);
+		Train trainObject = new Train();
+		UserInterface userInterface = new UserInterface();
+		trainObject.reduceAvailableSeats(trainDetail,totalSeats);
+		if(trainDetail.getTypeTrain() == "P")
+		userInterface.printTrainList(Train.trainList);	
+		else
+			userInterface.printTrainList(Train.trainList);	
 		
 	}
 }
