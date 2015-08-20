@@ -20,6 +20,8 @@ public class UserInterface {
 		BufferedReader bufferReaderObj = new BufferedReader(new InputStreamReader(System.in));// Reading input from keyboard
 		List<TrainDetail> trainList = null;							//List of TrainDetail class objects
 		int trainType = 1;
+		List<TrainDetail> filteredTrainList=null;
+		List<TrainDetail> filteredTrainListNew=null;
 		Train trainObj = new Train();								//Object of train class
 		boolean flag = false;
 		String source = "";
@@ -66,7 +68,7 @@ public class UserInterface {
 			System.out.println("You have entered a wrong choice: ");
 			System.exit(1);
 		}
-		List<TrainDetail> filteredTrainList = trainObj.filterList(trainList,source, destination);
+		 filteredTrainList = trainObj.filterList(source, destination);
 		classObj.printTrainList(filteredTrainList);
 		
 		boolean repeat = true;
@@ -88,20 +90,21 @@ public class UserInterface {
 				 System.out.print("Enter total weight: ");
 			 }
 			 seats = Integer.parseInt(bufferReaderObj.readLine());			//enter total number of passenger
-			 if(Integer.parseInt(filteredTrainList.get(trainExist).getSeatAvailable()) >= seats){
-				 paymentObj.checkout(filteredTrainList.get(trainExist), seats);
+			 filteredTrainListNew=filteredTrainList;
+			 if(Integer.parseInt( filteredTrainListNew.get(trainExist).getSeatAvailable()) >= seats){
+				 paymentObj.checkout( filteredTrainListNew.get(trainExist), seats);
 				 repeat = false;
 			 }
 			 else{
-				 trainList = trainObj.filterList(filteredTrainList,seats);
-				 classObj.printTrainList(trainList);
+				 filteredTrainList= trainObj.filterList(filteredTrainListNew,seats);
+				 classObj.printTrainList(filteredTrainList);
 				 repeat = true;
 			 }
 		 	}while(repeat);
 	}
 	/*End of main function*/
 	/* Start of isTrainExist function */
- 	final int isTrainExist(List<TrainDetail>trainListCheck, String trainNumber) {	//check if selected train exist or not
+ 	public final int isTrainExist(List<TrainDetail>trainListCheck, String trainNumber) {	//check if selected train exist or not
  		for (int counter = 0; counter < trainListCheck.size(); counter++) {			//if not exist then return -1
  																					//otherwise return index
  			if (Integer.parseInt(trainListCheck.get(counter).getTrainNumber()) == Integer.parseInt(trainNumber)){
@@ -125,6 +128,7 @@ public class UserInterface {
 			System.out.print(tempTrainList.getDestination() + "\t\t");
 			System.out.print(tempTrainList.getDuration() + "\t\t\t");
 			System.out.println(tempTrainList.getSeatAvailable());
+			
 		}
 	}
 	/* End of print train list function */
