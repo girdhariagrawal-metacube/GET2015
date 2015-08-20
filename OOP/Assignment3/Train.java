@@ -16,15 +16,14 @@ import java.util.List;
 public class Train {
 	
 	private BufferedReader bufferReaderObj;
-	List<TrainDetail> trainList = new ArrayList<TrainDetail>();
-	List<String> trainListSingleRow = new ArrayList<String>();
-	final String TRAIN_LIST_FILE = new File("src/trainList.csv").getAbsolutePath();// will contain the address of file that contain list of train
-	final String STRING_DELIMITER = ",";
-	private List<TrainDetail> filteredTrainList;
+	public static List<TrainDetail> trainList = new ArrayList<TrainDetail>();
+	private static final String TRAIN_LIST_FILE = new File("src/trainList.csv").getAbsolutePath();// will contain the address of file that contain list of train
+	private static final String STRING_DELIMITER = ",";
+//	private static List<TrainDetail> filteredTrainList = new ArrayList<TrainDetail>();
 	
 	/*starting of listTrain method*/
 	/*This method will list up all the train according to their type i.e. Passenger or Goods*/
-	public List<TrainDetail> listTrain(int type) throws IOException{
+	public List<TrainDetail> listTrain(int type){
 		String temp = "";
 		
 		try{
@@ -48,9 +47,10 @@ public class Train {
 	/*End of listTrain method*/
 
 	/*Starting of filterList function According to start and end*/
-	List<TrainDetail> filterList(List<TrainDetail>trainList, String source, String destination){
+	List<TrainDetail> filterList(String source, String destination){
 		List<TrainDetail> filteredTrainList = new ArrayList<TrainDetail>();
 		for(int counter=0 ; counter < trainList.size() ; counter++){
+			
 			TrainDetail tempTrainDetail = trainList.get(counter);
 			if(tempTrainDetail.getSource().equalsIgnoreCase(source) && tempTrainDetail.getDestination().equalsIgnoreCase(destination)){
 				filteredTrainList.add(tempTrainDetail);
@@ -62,11 +62,11 @@ public class Train {
 	/*End of filterList function (According to start and end)  */
 	
 	/*Starting of filterList function According to availability of seat */
-	List<TrainDetail> filterList(List<TrainDetail> trainList, int numberOfSeat){
-		filteredTrainList = new ArrayList<TrainDetail>();
-		for(int counter=0 ; counter < trainList.size() ; counter++){
-			if(Integer.parseInt(trainList.get(counter).getSeatAvailable()) > numberOfSeat){
-				filteredTrainList.add(trainList.get(counter));
+	List<TrainDetail> filterList(List<TrainDetail> filteredList , int numberOfSeat){
+		List<TrainDetail> filteredTrainList = new ArrayList<TrainDetail>();
+		for(int counter=0 ; counter < filteredList.size() ; counter++){
+			if(Integer.parseInt(filteredList.get(counter).getSeatAvailable()) > numberOfSeat){
+				filteredTrainList.add(filteredList.get(counter));
 			}
 		}
 		return filteredTrainList;
@@ -97,5 +97,17 @@ public class Train {
 		
 	}
 	/*End of insertDetails function*/
+	
+	/* Start of reduce Seats function */
+	void reduceAvailableSeats(TrainDetail trainDetail, int seats ){
+		for(int index=0;index<trainList.size();index++)
+		{
+			if(trainDetail.getTrainNumber().equals(trainList.get(index).getTrainNumber()))
+					trainList.get(index).setSeatAvailable(Integer.toString(Integer.parseInt(trainDetail.getSeatAvailable()) - seats));
+					
+		}
+		
+	}
+	/* End of reduce Seat function */
 }
 /* End of Train class */
