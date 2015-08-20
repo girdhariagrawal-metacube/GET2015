@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Payment {
-
+	boolean isCorrect = false;
 	void checkout(TrainDetail trainNumber, int totalSeats) throws IOException{
 		BufferedReader bufferReaderObj = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Your Name: ");
@@ -30,6 +30,31 @@ public class Payment {
 			}
 			else if(paymentChoice == 3){
 				payByNetBanking(name, trainNumber, totalSeats);
+				do {
+					try {
+						paymentChoice = Integer.parseInt(bufferReaderObj
+								.readLine());
+					} catch (NumberFormatException exception) {
+						System.out
+								.println("Please enter correct number like 1 2 3");
+						continue;
+
+					} catch (IOException io) {
+						System.out
+								.println("Please enter correct number like 1 2 3");
+						continue;
+					}
+					if (paymentChoice == 1) {
+						payByCreditCard(name, trainNumber, totalSeats);
+						isCorrect = true;
+					} else if (paymentChoice == 2) {
+						payByWallet(name, trainNumber, totalSeats);
+						isCorrect = true;
+					}	else if (paymentChoice == 3) {
+						payByNetBanking(name, trainNumber, totalSeats);
+						isCorrect=true;
+					}
+				}while(!isCorrect);
 			}
 		}
 		catch(NumberFormatException exception){
