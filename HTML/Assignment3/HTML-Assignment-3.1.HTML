@@ -1,0 +1,18 @@
+<HTML>
+	<HEAD>
+		<TITLE>HTML Assignment 3.1 </TITLE>
+		
+		<NOSCRIPT>Script is not enabled in your browser</NOSCRIPT>
+	</HEAD>
+	
+	<BODY>
+		<canvas width="400px" height="400px" style="border:2px solid black;" id="newCanvas">
+		</canvas>
+		<SCRIPT>
+			var canvas = document.getElementById("newCanvas");
+			var drawingObject = canvas.getContext("2d");
+			drawingObject.fillStyle = "#FF0000";
+			drawingObject.fillRect(0,0,400,400);
+		</SCRIPT>
+	</BODY>
+</HTML>
