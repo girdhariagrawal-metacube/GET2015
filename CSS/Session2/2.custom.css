@@ -1,0 +1,29 @@
+.parent {
+	margin-top:40px;
+	margin-bottom:50px;
+	margin-left:30%;
+	width:200px;
+	height:200px;
+	border: 5px #abcdef double;
+	text-align:center;
+	
+}
+
+.div1:hover {
+	transform: scale(2,2);
+	transition-duration:5s;
+	
+}
+
+.div2:hover {
+	transform: rotate(135deg);
+	transition-duration:5s;
+	
+}
+
+.div3:hover {
+	transform: skew(30deg,30deg);
+	transition-duration:5s;
+	
+}
+
