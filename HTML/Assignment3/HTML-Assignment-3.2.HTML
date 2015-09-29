@@ -1,0 +1,27 @@
+<HTML>
+	<HEAD>
+		<TITLE>HTML Assignment 3.2 </TITLE>
+		
+		<NOSCRIPT>Script is not enabled in your browser</NOSCRIPT>
+	</HEAD>
+	
+	<BODY>
+		<input type="Button" value="Click Me to find your location" onclick="getLocation()">
+		<div id="location"></div>
+		<SCRIPT>
+			var loc = document.getElementById("location");
+			function getLocation() {
+				if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+				} else { 
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				loc.innerHTML = "Latitude: " + position.coords.latitude + 
+				"<br>Longitude: " + position.coords.longitude;	
+			}
+		</SCRIPT>
+	</BODY>
+</HTML>
