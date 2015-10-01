@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td>Enter Your Age *</td>
-				<td><input type="number" id="age" step="any"></td>
+				<td><input type="number" id="age"  min="12" step="any"></td>
 			</tr>
 			<tr>
 				<td>Select State *</td>
@@ -50,14 +50,14 @@
 				<td><textarea id="addressLine1" rows="3"></textarea></td>
 			</tr>
 			<tr>
-				<td colspan="2"> <input type="checkbox" id="acceptCondition" onChange="activateSubmit()"> I Accept all <a href="#">Terms & Conditions</a></td>
+				<td colspan="2"> <input type="checkbox" id="acceptCondition" onChange="activateSubmit()"><label for="acceptCondition"> I Accept all <a href="#">Terms & Conditions</a></label></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="Submit" value="Create!!" id="submitButton" disabled></td>
 			</tr>
 	</form>
 </body>
-<script type="text/javascript" src="./script.js">
+<script type="text/javascript" src="script.js">
 		
 	</script>
 </html>
