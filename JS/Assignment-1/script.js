@@ -22,6 +22,9 @@ function validate() {
 	if(document.getElementById("passwd").value != document.getElementById("confirmPasswd").value) {
 		alert("Password & Confirm Password mismatch!!");
 	}
+	if(document.getElementById("state") != "" || document.getElementById("city") != "" ) {
+		alert("State or City are not Selected!!");
+	}
 	else {
 		alert(document.getElementById("textBox").value);
 	}
