@@ -1,0 +1,71 @@
+<html>
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	
+	.data {
+		background-color: red;
+		border:1px #000000 solid;
+		width:30px;
+		
+	}
+</style>
+<script>
+	function createTable() {
+	
+		var tabledata = document.getElementById("tableData");
+		var string = "";
+		for(count = 1; count <= 5; count++) {
+			name = document.getElementById("name"+count).value;
+			min = document.getElementById("min"+count).value;
+			max = document.getElementById("max"+count).value;
+			if(min > max) {
+				alert("Row "+count+" column maximum have value less then minimum.");
+				continue;
+			}
+			else if(min < 0 || max > 9 || min > 9 || max < 0) {
+				alert("Row "+count+" !! Enter value within range..");
+				continue;
+			}
+			string += "<tr><td>"+name+"</td>";
+			for(count2 = 1; count2 <= 10; count2++) {
+				if(count2 < min || count2 > max) {
+					string += "<td></td>";
+				} else string += "<td class='data'></td>";
+			}
+			string += "</tr>"
+		}
+		tableData.innerHTML = string;
+	}
+</script>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>Name</th><th>Minimum</th><th>Maximum</th>
+			<tr>
+				<td><input type="text" id="name1"></td><td><input type="number" min=0 max=9 id="min1"></td><td><input type="number" min=0 max=9 id="max1"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="name2"></td><td><input type="number" min=0 max=9 id="min2"></td><td><input type="number" min=0 max=9 id="max2"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="name3"></td><td><input type="number" min=0 max=9 id="min3"></td><td><input type="number" min=0 max=9 id="max3"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="name4"></td><td><input type="number" min=0 max=9 id="min4"></td><td><input type="number" min=0 max=9 id="max4"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="name5"></td><td><input type="number" min=0 max=9 id="min5"></td><td><input type="number" min=0 max=9 id="max5"></td>
+			</tr>
+			<tr>
+				<td colspan="3"><input type="button" id="button" onClick="createTable()" value="Click Me!!"></td>
+			</tr>
+		</table>
+	</form>
+	<table id="tableData">
+	</table>
+</body>
+
+</html>
