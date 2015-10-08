@@ -22,7 +22,7 @@ function validate() {
 	if(document.getElementById("passwd").value != document.getElementById("confirmPasswd").value) {
 		alert("Password & Confirm Password mismatch!!");
 	}
-	if(document.getElementById("state") != "" || document.getElementById("city") != "" ) {
+	if(document.getElementById("state").selectedIndex == 0 || document.getElementById("city").selectedIndex == 0 ) {
 		alert("State or City are not Selected!!");
 	}
 	else {
@@ -35,16 +35,16 @@ function createCity() {
 	var stateObject = document.getElementById("state");
 	switch(stateObject.value) {
 		case "Rajsthan" :
-			cityObject.innerHTML = "<Option>Jaipur</option><Option>Bikaner</option><Option>Kota</option><Option>Ajmer</option>";
+			cityObject.innerHTML = "<option>Select City</option><Option value='Jaipur'>Jaipur</option><Option value='Bikaner'>Bikaner</option><Option value='Kota'>Kota</option><Option value='Ajmer'>Ajmer</option>";
 			break;
 		case "MP" :
-			cityObject.innerHTML = "<Option>Bilaspur</option><Option>Bhopal</option><Option>Gwalior</option><Option>Mandi</option>";
+			cityObject.innerHTML = "<option>Select City</option><Option value='Bilaspur'>Bilaspur</option><Option value='Bhopal'>Bhopal</option><Option value='Gwalior'>Gwalior</option><Option value='Mandi'>Mandi</option>";
 			break;
 		case "UP" :
-			cityObject.innerHTML = "<Option>Agra</option><Option>Kanpur</option><Option>Aligarh</option><Option>Mathura</option>";
+			cityObject.innerHTML = "<option>Select City</option><Option value='Agra'>Agra</option><Option value='Kanpur'>Kanpur</option><Option value='Aligarh'>Aligarh</option><Option value='Mathura'>Mathura</option>";
 			break;
 		case "Maharastra":
-			cityObject.innerHTML = "<Option>Mumbai</option><Option>Pune</option><Option>Aurangabad</option><Option>Thane</option>";
+			cityObject.innerHTML = "<option>Select City</option><Option value='Mumbai'>Mumbai</option><Option value='Pune'>Pune</option><Option value='Aurangabad'>Aurangabad</option><Option value='Thane'>Thane</option>";
 			break;
 	}
 }
