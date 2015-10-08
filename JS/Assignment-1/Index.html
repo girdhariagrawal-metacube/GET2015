@@ -3,7 +3,7 @@
 	<title>Javascript Assignment 1</title>
 </head>
 <body>
-	<form onSubmit="validate()">
+	<form >
 		<table>
 			<tr>
 				<td>Enter First Name *</td>
@@ -28,7 +28,7 @@
 			<tr>
 				<td>Select State *</td>
 				<td>
-					<Select id="state" required onchange="createCity()">
+					<Select id="state" required onchange="createCity()" name="state">
 						<option>Select State</option>
 						<option value="Rajsthan">Rajsthan</option>
 						<option value="MP">Madhay Pradesh</option>
@@ -38,10 +38,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Select City *</td>
+				<td>Select City </td>
 				<td>
-					<select id="city">
-						<option>Select City</option>
+					<select id="city" name="city">
+						
 					</select>
 				</td>
 			</tr>
@@ -53,7 +53,7 @@
 				<td colspan="2"> <input type="checkbox" id="acceptCondition" onChange="activateSubmit()"><label for="acceptCondition"> I Accept all <a href="#">Terms & Conditions</a></label></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="Submit" value="Create!!" id="submitButton" disabled></td>
+				<td colspan="2"><input type="button" value="Create!!" id="submitButton" onClick="validate()" disabled></td>
 			</tr>
 	</form>
 </body>
