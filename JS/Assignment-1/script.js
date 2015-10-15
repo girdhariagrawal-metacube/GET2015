@@ -7,27 +7,51 @@ function activateSubmit() {
 	}
 }
 function validate() {
+	returnValue = true;
 	if(document.getElementById("firstName").value.trim() == "") {
-		alert("First Name Is Empty");
-	} 
+		document.getElementById("fNameError").innerHTML = "First Name Is Empty";
+		returnValue = false;
+	} else {
+		document.getElementById("fNameError").innerHTML = "";
+	}
 	
 	if(document.getElementById("lastName").value.trim() == "") {
-		alert("Last Name Is Empty");
+		document.getElementById("lNameError").innerHTML = "Last Name Is Empty";
+		returnValue = false;
+	} else {
+		document.getElementById("lNameError").innerHTML = "";
 	}
 	
 	if(document.getElementById("passwd").value.length < 8 ){
-		alert("Password Length should be greater than 8");
+		document.getElementById("passwordError").innerHTML = "Password Length should be greater than 8";
+		returnValue = false;
+	} else {
+		document.getElementById("passwordError").innerHTML = "";
 	}
 	
 	if(document.getElementById("passwd").value != document.getElementById("confirmPasswd").value) {
-		alert("Password & Confirm Password mismatch!!");
+		document.getElementById("confirmPasswordError").innerHTML = "Password & Confirm Password mismatch!!";
+		returnValue = false;
+	} else {
+		document.getElementById("confirmPasswordError").innerHTML = "";
+	}
+	if(document.getElementById("age").value == "") {
+		document.getElementById("ageError").innerHTML = "Age field can't be empty";
+	} else {
+		document.getElementById("ageError").innerHTML = "";
 	}
 	if(document.getElementById("state").selectedIndex == 0 || document.getElementById("city").selectedIndex == 0 ) {
-		alert("State or City are not Selected!!");
+		document.getElementById("stateError").innerHTML = "State or City are not Selected!!";
 	}
 	else {
 		alert(document.getElementById("textBox").value);
 	}
+	if(document.getElementById("address").value == "") {
+		document.getElementById("addressError").innerHTML = "Address field can't be empty";
+	} else {
+		document.getElementById("addressError").innerHTML = "";
+	}
+	return returnValue;
 	
 }
 function createCity() {
