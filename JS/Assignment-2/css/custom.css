@@ -35,8 +35,6 @@ input[type="button"], input[type="reset"]{
 }
 
 #tableData {
-	position: absolute;
-	top: 400px;
 	left:  40%;
 }
 
