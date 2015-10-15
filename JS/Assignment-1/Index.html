@@ -1,29 +1,45 @@
 <HTML>
 <head>
 	<title>Javascript Assignment 1</title>
+	<link href="custom.css" rel = "stylesheet">
 </head>
 <body>
-	<form >
+	<form action="#" id="registrationForm" method="POST" onsubmit="return validate()">
 		<table>
 			<tr>
 				<td>Enter First Name *</td>
 				<td><input type="text" id="firstName"></td>
 			</tr>
 			<tr>
+				<td id="fNameError" colspan="2" align="center"></td>
+			</tr>
+			<tr>
 				<td>Enter Last Name *</td>
 				<td><input type="text" id="lastName"></td>
+			</tr>
+			<tr>
+				<td id="lNameError" colspan="2"align="center"></td>
 			</tr>
 			<tr>
 				<td>Enter Password *</td>
 				<td><input type="password" id="passwd"></td>
 			</tr>
 			<tr>
-				<td>Enter Password *</td>
+				<td id="passwordError" colspan="2"align="center"></td>
+			</tr>
+			<tr>
+				<td>Confirm Password *</td>
 				<td><input type="password" id="confirmPasswd"></td>
 			</tr>
 			<tr>
+				<td id="confirmPasswordError" colspan="2"align="center"></td>
+			</tr>
+			<tr>
 				<td>Enter Your Age *</td>
-				<td><input type="number" id="age"  min="12" step="any"></td>
+				<td><input type="number" id="age"  min="12" max="100" step="any"></td>
+			</tr>
+			<tr>
+				<<td id="ageError" colspan="2"align="center"></td>
 			</tr>
 			<tr>
 				<td>Select State *</td>
@@ -41,19 +57,25 @@
 				<td>Select City </td>
 				<td>
 					<select id="city" name="city">
-						
+					
 					</select>
 				</td>
 			</tr>
 			<tr>
+				<td id="stateError" colspan="2"align="center"></td>
+			</tr>
+			<tr>
 				<td>Enter Your Address 	*</td>
-				<td><textarea id="addressLine1" rows="3"></textarea></td>
+				<td><textarea id="address" rows="3"></textarea></td>
+			</tr>
+			<tr>
+				<td id="addressError" colspan="2"align="center"></td>
 			</tr>
 			<tr>
 				<td colspan="2"> <input type="checkbox" id="acceptCondition" onChange="activateSubmit()"><label for="acceptCondition"> I Accept all <a href="#">Terms & Conditions</a></label></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="button" value="Create!!" id="submitButton" onClick="validate()" disabled></td>
+				<td colspan="2"><input type="Submit" value="Create!!" id="submitButton" disabled></td>
 			</tr>
 	</form>
 </body>
