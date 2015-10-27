@@ -1,1 +1,0 @@
-[main] ERROR LogGenerater.LoggerClass 23/10/2015 10:48:16 – Exception occurred at / by zero
