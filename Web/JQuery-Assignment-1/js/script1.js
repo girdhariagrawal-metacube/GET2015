@@ -9,9 +9,11 @@ function toggle() {
 }
 
 function show() {
-		document.getElementById("sampleText").style.visibility="visible";
+	document.getElementById("sampleText").style.visibility="visible";
+	document.getElementById("button3").value="Hide";			
 }
 
 function hide() {
-		document.getElementById("sampleText").style.visibility="hidden";
+	document.getElementById("sampleText").style.visibility="hidden";
+	document.getElementById("button3").value="Show";
 }
